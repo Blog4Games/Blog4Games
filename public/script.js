@@ -49,3 +49,36 @@ document.addEventListener('DOMContentLoaded', () => {
   loadComments();
   loadPosts();
 });
+let socket;
+
+function connectChat() {
+  if (!socket) {
+    socket = io();
+
+    socket.on('chat message', ({ user, message }) => {
+      const chatWindow = document.getElementById('chatWindow');
+      const div = document.createElement('div');
+      div.innerHTML = `<strong>${user}</strong>: ${message}`;
+      chatWindow.appendChild(div);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    });
+  }
+}
+
+function sendMessage(event) {
+  if (event.key === 'Enter') {
+    const user = document.getElementById('chatUsername').value.trim();
+    const msg = document.getElementById('chatMessage').value.trim();
+    if (!user || !msg) return;
+
+    socket.emit('chat message', { user, message: msg });
+    document.getElementById('chatMessage').value = '';
+  }
+}
+
+// Aktywuj czat przy przełączaniu zakładki
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (id === 'discussion') connectChat();
+}
