@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Mój Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="#" onclick="showSection('blog')">Blog</a>
+    <a href="#" onclick="showSection('comments')">Komentarze</a>
+    <a href="#" onclick="showSection('about')">O nas</a>
+  </nav>
+
+  <div class="container">
+    <section id="blog" class="active">
+      <h1>Witamy na blogu!</h1>
+      <div id="posts"></div>
+    </section>
+
+    <section id="comments">
+      <h1>Komentarze</h1>
+      <form class="comment-form" onsubmit="addComment(event)">
+        <input type="text" id="username" placeholder="Twoja nazwa użytkownika" required>
+        <textarea id="commentText" rows="4" placeholder="Twój komentarz..." required></textarea>
+        <button type="submit">Dodaj komentarz</button>
+      </form>
+      <div id="commentsList"></div>
+    </section>
+
+    <section id="about">
+      <h1>O nas</h1>
+      <p>Jesteśmy pasjonatami pisania i dzielenia się wiedzą. Zapraszamy do lektury naszych wpisów!</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
