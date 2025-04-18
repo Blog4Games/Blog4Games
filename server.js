@@ -44,6 +44,10 @@ io.on('connection', socket => {
   console.log('Użytkownik połączony do czatu');
   socket.on('chat message', ({ user, message }) => {
     io.emit('chat message', { user, message }); // wysyłka do wszystkich
+    socket.on('clear', () => {
+  io.emit('clear');
+});
+
   });
 });
 
