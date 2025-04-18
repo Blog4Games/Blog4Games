@@ -1,0 +1,8 @@
+projekt-blog/
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── posts.json
+├── server.js
+└── comments.json
