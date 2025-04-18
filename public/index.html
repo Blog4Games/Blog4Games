@@ -10,6 +10,7 @@
   <nav>
     <a href="#" onclick="showSection('blog')">Blog</a>
     <a href="#" onclick="showSection('comments')">Komentarze</a>
+    <a href="#" onclick="showSection('discussion')">Dyskusja</a>
     <a href="#" onclick="showSection('about')">O nas</a>
   </nav>
 
@@ -41,6 +42,12 @@
   <p>Masz pytania, sugestie lub chcesz się z nami skontaktować?</p>
   <p><strong>Administrator strony:</strong> <a href="mailto:blog4games.adm@gmail.com">blog4games.adm@gmail.com</a></p>
   <p><strong>Współpraca / reklama:</strong> <a href="mailto:blog4games.wspolpraca@gmail.com">blog4games.wspolpraca@gmail.com</a></p>
+</section>
+<section id="discussion">
+  <h1>Dyskusja</h1>
+  <input type="text" id="chatUsername" placeholder="Podaj swój nick" />
+  <div id="chatWindow"></div>
+  <input type="text" id="chatMessage" placeholder="Wpisz wiadomość" onkeydown="sendMessage(event)" />
 </section>
   </div>
 
