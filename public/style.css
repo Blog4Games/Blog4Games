@@ -65,19 +65,20 @@ section.active {
   .container {
     padding: 10px;
   }
-  #discussion {
+#discussion {
   max-width: 600px;
   margin: auto;
+  text-align: center;
 }
 
 #chatWindow {
   border: 1px solid #ccc;
+  background: #f4f4f4;
   height: 300px;
   overflow-y: scroll;
-  margin-bottom: 10px;
+  margin: 10px 0;
   padding: 10px;
   text-align: left;
-  background-color: #f9f9f9;
 }
 
 #chatMessage, #chatUsername {
@@ -85,12 +86,20 @@ section.active {
   padding: 10px;
   margin-bottom: 10px;
 }
-.chat-user {
-  font-weight: bold;
+
+#discussion button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #008000;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
 
-.chat-message {
-  margin: 5px 0;
+#discussion button:hover {
+  background-color: #005d00;
 }
+
 
 }
