@@ -78,13 +78,19 @@ function connectChat() {
 
 function sendMessage(event) {
   if (event.key === 'Enter') {
-    const user = document.getElementById('chatUsername').value.trim();
-    const msg = document.getElementById('chatMessage').value.trim();
-    if (!user || !msg) return;
-
-    socket.emit('chat message', { user, message: msg });
-    document.getElementById('chatMessage').value = '';
+    sendChatMessage();
   }
+}
+
+function sendChatMessage() {
+  const user = document.getElementById('chatUsername').value.trim();
+  const msg = document.getElementById('chatMessage').value.trim();
+  if (!user || !msg) return;
+
+  socket.emit('chat message', { user, message: msg });
+  document.getElementById('chatMessage').value = '';
+}
+
 }
 
 function clearChat() {
