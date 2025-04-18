@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPosts();
 });
 let socket;
+const userColors = {}; // mapowanie nicków na kolory
 
 function connectChat() {
   if (!socket) {
@@ -57,10 +58,20 @@ function connectChat() {
 
     socket.on('chat message', ({ user, message }) => {
       const chatWindow = document.getElementById('chatWindow');
-      const div = document.createElement('div');
-      div.innerHTML = `<strong>${user}</strong>: ${message}`;
-      chatWindow.appendChild(div);
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'chat-message';
+
+      if (!userColors[user]) {
+        userColors[user] = getColorForUser(user);
+      }
+
+      msgDiv.innerHTML = `<span class="chat-user" style="color:${userColors[user]}">${user}</span>: ${message}`;
+      chatWindow.appendChild(msgDiv);
       chatWindow.scrollTop = chatWindow.scrollHeight;
+    });
+
+    socket.on('clear', () => {
+      document.getElementById('chatWindow').innerHTML = '';
     });
   }
 }
@@ -76,9 +87,17 @@ function sendMessage(event) {
   }
 }
 
-// Aktywuj czat przy przełączaniu zakładki
-function showSection(id) {
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if (id === 'discussion') connectChat();
+function clearChat() {
+  socket.emit('clear');
 }
+
+function getColorForUser(username) {
+  // Prostą funkcja hashująca nazwę do koloru
+  let hash = 0;
+  for (let i = 0; i < username.length; i++) {
+    hash = username.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const color = `hsl(${hash % 360}, 70%, 50%)`;
+  return color;
+}
+
