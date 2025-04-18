@@ -65,4 +65,25 @@ section.active {
   .container {
     padding: 10px;
   }
+  #discussion {
+  max-width: 600px;
+  margin: auto;
+}
+
+#chatWindow {
+  border: 1px solid #ccc;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: left;
+  background-color: #f9f9f9;
+}
+
+#chatMessage, #chatUsername {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 }
