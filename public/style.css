@@ -85,5 +85,12 @@ section.active {
   padding: 10px;
   margin-bottom: 10px;
 }
+.chat-user {
+  font-weight: bold;
+}
+
+.chat-message {
+  margin: 5px 0;
+}
 
 }
